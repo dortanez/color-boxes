@@ -2,8 +2,11 @@ const randomArr = (arr) => {
     const copy = arr.slice()
     const array = [];
     for(let i = 0; i < arr.length; i++) {
+        const obj = {};
         const ran = Math.floor(Math.random() * copy.length)
-        array.push(copy.splice(ran, 1))
+        obj.color = copy.splice(ran, 1).join();
+        obj.isSelected = false;
+        array.push(obj)
     }
     return array;
 }

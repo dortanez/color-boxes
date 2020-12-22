@@ -10,13 +10,16 @@ const ColorBoxes = (props) => {
 
     const changeBox = () => {
         const ran = Math.floor(Math.random() * props.colors.length);
-        const boxesCopy = boxes.slice();
-        boxesCopy[ran] = choice(props.colors);
+        const boxesCopy = [...boxes]
+        boxesCopy[ran].color = choice(props.colors);
+        boxesCopy.map(i => i.isSelected = false)
+        boxesCopy[ran].isSelected = true;
         setBoxes(boxesCopy);
+
 
     }
     const boxComp = boxes.map((color, i) => {
-        return <Box key={i} color={color} />
+        return <Box key={i} selected={color.isSelected} color={color.color} />
     })
     
 
